@@ -24,6 +24,7 @@ RUN apt-get update \
         php7.4-zip \
 	&& apt-get -y --no-install-recommends install \
 	    make \
+	    php-xdebug \
     && apt-get install -y --only-upgrade php7.4-cli php7.4-common \
     && apt-get autoremove -y \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
