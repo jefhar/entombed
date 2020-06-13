@@ -6,6 +6,7 @@ FROM jefhar/entombed:latest
 # Update packages
 RUN apt-get update \
 	&& apt-get -y --no-install-recommends install \
-	    php7.4-pcov \
+        php7.4-pcov \
+        php7.4-xml \
     && apt-get autoremove -y \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
