@@ -1,0 +1,53 @@
+{
+  "name": "jefhar/entombed",
+  "description": "Entombed 8-bit map generator.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "jeff",
+      "email": "jeff@jeffharris.us"
+    }
+  ],
+  "require": {
+    "php": "~7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Entombed\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "secure-http": true,
+    "sort-packages": true
+  },
+  "scripts": {
+    "phpcs": [
+      "rm -rf tests/coverage",
+      "vendor/bin/phpcs --standard=PSR12 -sn app tests"
+    ],
+    "phpcbf": [
+      "rm -rf tests/coverage",
+      "vendor/bin/phpcbf --standard=PSR12 app tests"
+    ],
+    "pretest": [
+      "vendor/bin/security-checker security:check composer.lock",
+      "vendor/bin/phpstan analyse",
+      "@phpcs"
+    ],
+    "test": "php -dmemory_limit=128M -dpcov.enabled=1 -dpcov.directory=. -dpcov.exclude='~vendor~' vendor/bin/phpunit --coverage-text --colors=never --testdox"
+  },
+  "require-dev": {
+    "ext-xml": "*",
+    "phpstan/phpstan": "0.12.25",
+    "phpunit/phpunit": "9.2.2",
+    "sensiolabs/security-checker": "v6.0.3",
+    "squizlabs/php_codesniffer": "3.5.5"
+  }
+}
