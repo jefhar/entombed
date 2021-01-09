@@ -92,7 +92,7 @@ class RowOutput
         }
 
         // Hook for verification
-        self::generated($newRow);
+        $newRow = self::generated($newRow);
 
         // Now do post-processing
         $lastRows[] = $newRow;
@@ -134,10 +134,11 @@ class RowOutput
     }
 
     /**
+     * Override this function to provide a verification hook.
      * @param int $newRow
      */
     public static function generated(int $newRow)
     {
-        return;
+        return $newRow;
     }
 }
