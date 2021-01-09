@@ -60,7 +60,7 @@ class RowOutput
         }
         $output = 'XXXX' . $output;
 
-        return $output . strrev($output);
+        return $output . strrev($output) . PHP_EOL;
     }
 
     /**
@@ -88,7 +88,7 @@ class RowOutput
                 $newBit = self::midRandomBit();
             }
             $newRow = ($newRow << 1) | $newBit;
-            $lastTwo = (($lastTwo << 1) | $newBit) && 0b11;
+            $lastTwo = (($lastTwo << 1) | $newBit) & 0b11;
         }
 
         // Hook for verification
